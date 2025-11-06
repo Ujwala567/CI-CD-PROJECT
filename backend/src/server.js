@@ -30,12 +30,19 @@ app.get('/api/deployments', (req, res) => {
   });
 });
 
+// Test endpoint for frontend button - ADD THIS BEFORE app.listen()
+app.get('/api/test', (req, res) => {
+  res.json({
+    message: 'Test! OK',
+    status: 'success',
+    timestamp: new Date().toISOString(),
+    service: 'deployhub-backend'
+  });
+});
+
+// This should be the LAST line
 app.listen(PORT, () => {
   console.log(`🚀 DeployHub Backend running on port ${PORT}`);
   console.log(`📊 Health check: http://localhost:${PORT}/health`);
+  console.log(`🧪 Test endpoint: http://localhost:${PORT}/api/test`);
 });
-
-
-
-
-
